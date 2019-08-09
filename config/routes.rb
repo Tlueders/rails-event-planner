@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'events/:id/edit', to: 'site#index'
 
   namespace :api do
-    resources :events, only: %i[index show create destroy update]
+    namespace :v1 do
+      resources :events, only: %i[index show create destroy update]
+    end
   end
 end

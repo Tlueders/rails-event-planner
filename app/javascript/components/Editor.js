@@ -23,7 +23,7 @@ class Editor extends React.Component {
 
   componentDidMount() {
     axios
-      .get('/api/events.json')
+      .get('/api/v1/events.json')
       .then(response => this.setState({ events: response.data }))
       .catch(handleAjaxError);
   }
@@ -32,7 +32,7 @@ class Editor extends React.Component {
     const sure = window.confirm('Are you sure?');
     if (sure) {
       axios
-        .delete(`/api/events/${eventId}.json`)
+        .delete(`/api/v1/events/${eventId}.json`)
         .then((response) => {
           if (response.status === 204) {
             success('Event deleted');
@@ -49,7 +49,7 @@ class Editor extends React.Component {
 
   addEvent(newEvent) {
     axios
-      .post('/api/events.json', newEvent)
+      .post('/api/v1/events.json', newEvent)
       .then((response) => {
         success('Event Added!');
         const savedEvent = response.data;
